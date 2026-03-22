@@ -1,0 +1,14 @@
+c:\Users\alvar\Desktop\Tio Lu\BibliotecaDoZe\bin\Debug\net9.0\BibliotecaDoZe.exe
+C:\Users\alvar\Desktop\Tio Lu\BibliotecaDoZe\bin\Debug\net9.0\BibliotecaDoZe.deps.json
+C:\Users\alvar\Desktop\Tio Lu\BibliotecaDoZe\bin\Debug\net9.0\BibliotecaDoZe.runtimeconfig.json
+c:\Users\alvar\Desktop\Tio Lu\BibliotecaDoZe\bin\Debug\net9.0\BibliotecaDoZe.dll
+c:\Users\alvar\Desktop\Tio Lu\BibliotecaDoZe\bin\Debug\net9.0\BibliotecaDoZe.pdb
+c:\Users\alvar\Desktop\Tio Lu\BibliotecaDoZe\obj\Debug\net9.0\BibliotecaDoZe.GeneratedMSBuildEditorConfig.editorconfig
+c:\Users\alvar\Desktop\Tio Lu\BibliotecaDoZe\obj\Debug\net9.0\BibliotecaDoZe.AssemblyInfoInputs.cache
+c:\Users\alvar\Desktop\Tio Lu\BibliotecaDoZe\obj\Debug\net9.0\BibliotecaDoZe.AssemblyInfo.cs
+c:\Users\alvar\Desktop\Tio Lu\BibliotecaDoZe\obj\Debug\net9.0\BibliotecaDoZe.csproj.CoreCompileInputs.cache
+c:\Users\alvar\Desktop\Tio Lu\BibliotecaDoZe\obj\Debug\net9.0\BibliotecaDoZe.dll
+c:\Users\alvar\Desktop\Tio Lu\BibliotecaDoZe\obj\Debug\net9.0\refint\BibliotecaDoZe.dll
+c:\Users\alvar\Desktop\Tio Lu\BibliotecaDoZe\obj\Debug\net9.0\BibliotecaDoZe.pdb
+C:\Users\alvar\Desktop\Tio Lu\BibliotecaDoZe\obj\Debug\net9.0\BibliotecaDoZe.genruntimeconfig.cache
+C:\Users\alvar\Desktop\Tio Lu\BibliotecaDoZe\obj\Debug\net9.0\ref\BibliotecaDoZe.dll
