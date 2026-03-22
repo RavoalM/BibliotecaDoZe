@@ -18,18 +18,20 @@ public class TelaLivro
             Console.Clear();
             Console.WriteLine("=== LIVROS ===");
             Console.WriteLine("1 - Cadastrar");
-            Console.WriteLine("2 - Listar");
-            Console.WriteLine("3 - Voltar");
+            Console.WriteLine("2 - Editar");
+            Console.WriteLine("3 - Listar");
+            Console.WriteLine("4 - Voltar");
 
             int.TryParse(Console.ReadLine(), out opcao);
 
             switch (opcao)
             {
                 case 1: Cadastrar(); break;
-                case 2: Listar(); break;
+                case 2: Editar(); break;
+                case 3: Listar(); break;
             }
 
-        } while (opcao != 3);
+        } while (opcao != 4);
     }
 
     private void Cadastrar()
@@ -40,12 +42,42 @@ public class TelaLivro
         Console.Write("Autor: ");
         string autor = Console.ReadLine() ?? "";
 
-        Genero genero = Genero.Ficcao; // simplificado
-
         Console.Write("Editora: ");
         string editora = Console.ReadLine() ?? "";
 
-        repo.Cadastrar(new Livro(titulo, autor, genero, editora));
+        repo.Cadastrar(new Livro(titulo, autor, editora));
+    }
+
+        private void Editar()
+    {
+        Console.Write("ID do livro: ");
+
+        int id;
+        while (!int.TryParse(Console.ReadLine(), out id))
+            Console.Write("ID inválido: ");
+
+        var livro = repo.SelecionarPorId(id);
+
+        if (livro == null)
+        {
+            Console.WriteLine("Livro não encontrado!");
+            Console.ReadLine();
+            return;
+        }
+
+        Console.Write("Novo título: ");
+        string titulo = Console.ReadLine() ?? "";
+
+        Console.Write("Novo autor: ");
+        string autor = Console.ReadLine() ?? "";
+
+        Console.Write("Nova editora: ");
+        string editora = Console.ReadLine() ?? "";
+
+        repo.Editar(id, titulo, autor, editora);
+
+        Console.WriteLine("Livro atualizado!");
+        Console.ReadLine();
     }
 
     private void Listar()

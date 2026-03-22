@@ -12,3 +12,4 @@ c:\Users\alvar\Desktop\Tio Lu\BibliotecaDoZe\obj\Debug\net9.0\refint\BibliotecaD
 c:\Users\alvar\Desktop\Tio Lu\BibliotecaDoZe\obj\Debug\net9.0\BibliotecaDoZe.pdb
 C:\Users\alvar\Desktop\Tio Lu\BibliotecaDoZe\obj\Debug\net9.0\BibliotecaDoZe.genruntimeconfig.cache
 C:\Users\alvar\Desktop\Tio Lu\BibliotecaDoZe\obj\Debug\net9.0\ref\BibliotecaDoZe.dll
+c:\Users\alvar\Desktop\Tio Lu\BibliotecaDoZe\obj\Debug\net9.0\BibliotecaDoZe.sourcelink.json

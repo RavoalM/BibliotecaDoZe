@@ -39,7 +39,7 @@ public class TelaEmprestimo
                 case 4: BuscarLivroEmprestado(); break;
             }
 
-        } while (opcao != 3);
+        } while (opcao != 5);
     }
     private void Emprestar()
     {

@@ -9,6 +9,18 @@ public class RepositorioLivro
         livros.Add(livro);
     }
 
+    public void Editar(int id, string novoTitulo, string novoAutor, string novaEditora)
+{
+    var livro = SelecionarPorId(id);
+
+    if (livro != null)
+    {
+        livro.Titulo = novoTitulo;
+        livro.Autor = novoAutor;
+        livro.Editora = novaEditora;
+    }
+}
+
     public List<Livro> SelecionarTodos()
     {
         return livros;

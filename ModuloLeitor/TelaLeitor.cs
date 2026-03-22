@@ -50,7 +50,7 @@ public class TelaLeitor
         }
 
         Console.Write("Telefone: ");
-        string telefone = Console.ReadLine() ?? "";
+        int telefone = int.Parse(Console.ReadLine()!);
 
         var leitor = new Leitor(nome, cpf, telefone);
 
@@ -64,6 +64,35 @@ public class TelaLeitor
         }
 
         repoLeitor.Cadastrar(leitor);
+    }
+
+public void EditarLeitor()
+    {
+        Console.Clear();
+        Console.WriteLine("=== EDITAR LEITOR ===\n");
+
+        Console.Write("CPF: ");
+        string cpf = Console.ReadLine() ?? "";
+
+        var leitor = repoLeitor.SelecionarPorCpf(cpf);
+
+        if (leitor == null)
+        {
+            Console.WriteLine("Leitor não encontrado!");
+            Console.ReadLine();
+            return;
+        }
+
+        Console.Write("Novo Nome: ");
+        leitor.Nome = Console.ReadLine() ?? "";
+
+        Console.Write("Novo CPF: ");
+       leitor.Cpf = Console.ReadLine() ?? "";
+
+        Console.Write("Nova Telefone: ");
+        leitor.Telefone = int.Parse(Console.ReadLine()!);
+
+        Console.WriteLine("\nLeitor atualizado!");
     }
 
     private void Listar()
