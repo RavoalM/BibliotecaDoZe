@@ -13,10 +13,10 @@ public class Program
         var TelaEmprestimo = new TelaEmprestimo(repoEmp, repoLeitor, repoLivro);
 
         int opcao;
-
+        
+        TelaPrincipal.Intruducao();
         do
         {
-            TelaPrincipal.Intruducao();
             TelaPrincipal.MostrarMenu();
             int.TryParse(Console.ReadLine(), out opcao);
 
