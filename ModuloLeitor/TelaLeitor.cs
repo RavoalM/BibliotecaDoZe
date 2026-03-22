@@ -2,11 +2,11 @@ namespace Biblioteca;
 
 public class TelaLeitor
 {
-    private RepositorioLeitor repo;
+    private RepositorioLeitor repoLeitor;
 
-    public TelaLeitor(RepositorioLeitor repo)
+    public TelaLeitor(RepositorioLeitor repoLeitor)
     {
-        this.repo = repo;
+        this.repoLeitor = repoLeitor;
     }
 
     public void MostrarMenu()
@@ -42,7 +42,7 @@ public class TelaLeitor
         Console.Write("CPF: ");
         string cpf = Console.ReadLine() ?? "";
 
-        if (repo.CpfJaExiste(cpf))
+        if (repoLeitor.CpfJaExiste(cpf))
         {
             Console.WriteLine("CPF já cadastrado!");
             Console.ReadLine();
@@ -63,12 +63,12 @@ public class TelaLeitor
             return;
         }
 
-        repo.Cadastrar(leitor);
+        repoLeitor.Cadastrar(leitor);
     }
 
     private void Listar()
     {
-        foreach (var l in repo.SelecionarTodos())
+        foreach (var l in repoLeitor.SelecionarTodos())
         {
             Console.WriteLine($"{l.Nome} - {l.Cpf}");
         }
@@ -80,6 +80,6 @@ public class TelaLeitor
         Console.Write("CPF: ");
         string cpf = Console.ReadLine() ?? "";
 
-        repo.Remover(cpf);
+        repoLeitor.Remover(cpf);
     }
 }

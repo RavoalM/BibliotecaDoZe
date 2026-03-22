@@ -15,9 +15,9 @@ public class RepositorioEmprestimo
         if (emp != null) emprestimos.Remove(emp);
     }
 
-    public Emprestimo? BuscarPorLivro(string titulo)
+    public Emprestimo? BuscarPorLivro(int id)
     {
-        return emprestimos.Find(e => e.Livro.Titulo == titulo);
+        return emprestimos.Find(e => e.Livro.Id == id);
     }
 
     public List<Emprestimo> SelecionarTodos()

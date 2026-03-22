@@ -28,27 +28,19 @@ public class TelaPrincipal
         Console.ResetColor();
     }
 
-    public char ApresentarMenuPrincipal()
+    public static void MostrarMenu()
     {
-        Console.Clear();
+            Console.Clear();
+            Console.WriteLine("----------------------------------------");
+            Console.WriteLine("|         Bibilotecas Doki Doki        |");
+            Console.WriteLine("----------------------------------------");
 
-        Console.WriteLine("----------------------------------------");
-        Console.WriteLine("|         Bibilotecas Doki Doki        |");
-        Console.WriteLine("----------------------------------------");
+            Console.WriteLine();
 
-        Console.WriteLine();
+            Console.WriteLine("1 - Controle de Leitores");
+            Console.WriteLine("2 - Controle de Livros");
+            Console.WriteLine("3 - Controle de Emprestimos");
+            Console.WriteLine("4 - Sair");
 
-        Console.WriteLine("1 - Controle de Leitores");
-        Console.WriteLine("2 - Controle de Livros");
-        Console.WriteLine("3 - Controle de Emprestimos");
-
-        Console.WriteLine();
-
-        Console.Write("Escolha uma das opções: ");
-
-        string entrada = Console.ReadLine() ?? "";
-        char opcaoEscolhida = entrada.Length > 0 ? entrada[0] : '0';
-
-        return opcaoEscolhida;
     }
 }

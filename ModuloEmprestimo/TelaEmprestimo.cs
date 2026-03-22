@@ -22,8 +22,11 @@ public class TelaEmprestimo
             Console.Clear();
             Console.WriteLine("=== EMPRESTIMOS ===\n");
             Console.WriteLine("1 - Realizar Emprestimo");
+            Console.WriteLine("2 - Realizar Devolução");
+            Console.WriteLine("3 - Verificar Leitores com livros");
+            Console.WriteLine("4 - Buscar livro emprestado");
 
-            Console.WriteLine("2 - Voltar\n");
+            Console.WriteLine("5 - Voltar\n");
 
             while (!int.TryParse(Console.ReadLine(), out opcao))
                 Console.Write("Inválido: ");
@@ -84,10 +87,10 @@ public class TelaEmprestimo
 
     private void BuscarLivroEmprestado()
     {
-        Console.Write("Título: ");
-        string titulo = Console.ReadLine() ?? "";
+        Console.Write("ID Livro: ");
+        int id = int.Parse(Console.ReadLine()!);
 
-        var emp = repoEmp.BuscarPorLivro(titulo);
+        var emp = repoEmp.BuscarPorLivro(id);
 
         if (emp != null)
             Console.WriteLine($"Está com: {emp.Leitor.Nome}");
