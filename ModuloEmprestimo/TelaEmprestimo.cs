@@ -70,21 +70,47 @@ public class TelaEmprestimo
     }
 
     private void ListarComLivros()
-    {
-        foreach (var l in repoLeitor.SelecionarTodos())
-        {
-            Console.WriteLine($"\n{l.Nome}");
+{
+    Console.Clear();
+    Console.WriteLine("=== LEITORES E SEUS LIVROS ===\n");
 
-            foreach (var e in repoEmp.SelecionarTodos())
+    var leitores = repoLeitor.SelecionarTodos();
+    var emprestimos = repoEmp.SelecionarTodos();
+
+    if (leitores.Count == 0)
+    {
+        Console.WriteLine("Nenhum leitor cadastrado.");
+    }
+    else
+    {
+        foreach (var l in leitores)
+        {
+            Console.WriteLine($"Nome: {l.Nome} )");
+              Console.WriteLine($"Cpf:: {l.Cpf} )");
+
+            bool temLivro = false;
+
+            foreach (var e in emprestimos)
             {
                 if (e.Leitor == l)
-                    Console.WriteLine($"- {e.Livro.Titulo}");
+                {
+                    Console.WriteLine($"Livros: {e.Livro.Titulo}");
+                    temLivro = true;
+                }
             }
-        }
 
-        Console.ReadLine();
+            if (!temLivro)
+            {
+                Console.WriteLine("(Nenhum livro)");
+            }
+
+            Console.WriteLine("----------------------------");
+        }
     }
 
+    Console.WriteLine("\nPressione ENTER...");
+    Console.ReadLine();
+}
     private void BuscarLivroEmprestado()
     {
         Console.Write("ID Livro: ");

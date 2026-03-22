@@ -17,24 +17,26 @@ public class TelaLeitor
         {
             Console.Clear();
             Console.WriteLine("=== LEITORES ===");
-            Console.WriteLine("1 - Cadastrar");
-            Console.WriteLine("2 - Listar");
-            Console.WriteLine("3 - Remover");
-            Console.WriteLine("4 - Voltar");
+            Console.WriteLine("1 - Cadastrar Leitor");
+            Console.WriteLine("2 - Editar Leitor");
+            Console.WriteLine("3 - Listar Leitores");
+            Console.WriteLine("4 - Remover Leitor");
+            Console.WriteLine("5 - Voltar");
 
             int.TryParse(Console.ReadLine(), out opcao);
 
             switch (opcao)
             {
-                case 1: Cadastrar(); break;
-                case 2: Listar(); break;
-                case 3: Remover(); break;
+                case 1: CadastrarLeitor(); break;
+                case 2: EditarLeitor(); break;
+                case 3: ListarLeitor(); break;
+                case 4: RemoverLeitor(); break;
             }
 
-        } while (opcao != 4);
+        } while (opcao != 5);
     }
 
-    private void Cadastrar()
+    private void CadastrarLeitor()
     {
         Console.Write("Nome: ");
         string nome = Console.ReadLine() ?? "";
@@ -95,16 +97,33 @@ public void EditarLeitor()
         Console.WriteLine("\nLeitor atualizado!");
     }
 
-    private void Listar()
+private void ListarLeitor()
+{
+    Console.Clear();
+    Console.WriteLine("=== LISTA DE LEITORES ===\n");
+
+    var lista = repoLeitor.SelecionarTodos();
+
+    if (lista.Count == 0)
     {
-        foreach (var l in repoLeitor.SelecionarTodos())
+        Console.WriteLine("Nenhum leitor cadastrado.");
+    }
+    else
+    {
+        foreach (var l in lista)
         {
-            Console.WriteLine($"{l.Nome} - {l.Cpf}");
+            Console.WriteLine($"CPF: {l.Cpf}");
+            Console.WriteLine($"Nome: {l.Nome}");
+            Console.WriteLine($"Telefone: {l.Telefone}");
+            Console.WriteLine("----------------------------");
         }
-        Console.ReadLine();
     }
 
-    private void Remover()
+    Console.WriteLine("\nPressione ENTER...");
+    Console.ReadLine();
+}
+
+    private void RemoverLeitor()
     {
         Console.Write("CPF: ");
         string cpf = Console.ReadLine() ?? "";
