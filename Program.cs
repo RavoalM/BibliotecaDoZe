@@ -13,7 +13,7 @@ public class Program
         var TelaEmprestimo = new TelaEmprestimo(repoEmp, repoLeitor, repoLivro);
 
         int opcao;
-        
+
         TelaPrincipal.Intruducao();
         do
         {
@@ -22,8 +22,8 @@ public class Program
 
             switch (opcao)
             {
-                case 1: telaLivro.MostrarMenu(); break;
-                case 2: telaLeitor.MostrarMenu(); break;
+                case 1: telaLeitor.MostrarMenu(); break;
+                case 2: telaLivro.MostrarMenu(); break;
                 case 3: TelaEmprestimo.MostrarMenu(); break;
             }
 

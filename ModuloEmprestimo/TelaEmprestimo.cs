@@ -43,6 +43,9 @@ public class TelaEmprestimo
     }
     private void Emprestar()
     {
+        Console.Clear();
+        Console.WriteLine("=== EMPRESTAR LIVRO ===\n");
+
         Console.Write("CPF: ");
         string cpf = Console.ReadLine() ?? "";
 
@@ -60,6 +63,9 @@ public class TelaEmprestimo
 
     private void Devolver()
     {
+        Console.Clear();
+        Console.WriteLine("=== DEVOLVER LIVRO ===\n");
+
         Console.Write("ID Livro: ");
         int id = int.Parse(Console.ReadLine()!);
 
@@ -70,47 +76,47 @@ public class TelaEmprestimo
     }
 
     private void ListarComLivros()
-{
-    Console.Clear();
-    Console.WriteLine("=== LEITORES E SEUS LIVROS ===\n");
-
-    var leitores = repoLeitor.SelecionarTodos();
-    var emprestimos = repoEmp.SelecionarTodos();
-
-    if (leitores.Count == 0)
     {
-        Console.WriteLine("Nenhum leitor cadastrado.");
-    }
-    else
-    {
-        foreach (var l in leitores)
+        Console.Clear();
+        Console.WriteLine("=== LEITORES E SEUS LIVROS ===\n");
+
+        var leitores = repoLeitor.SelecionarTodos();
+        var emprestimos = repoEmp.SelecionarTodos();
+
+        if (leitores.Count == 0)
         {
-            Console.WriteLine($"Nome: {l.Nome} )");
-              Console.WriteLine($"Cpf:: {l.Cpf} )");
-
-            bool temLivro = false;
-
-            foreach (var e in emprestimos)
-            {
-                if (e.Leitor == l)
-                {
-                    Console.WriteLine($"Livros: {e.Livro.Titulo}");
-                    temLivro = true;
-                }
-            }
-
-            if (!temLivro)
-            {
-                Console.WriteLine("(Nenhum livro)");
-            }
-
-            Console.WriteLine("----------------------------");
+            Console.WriteLine("Nenhum leitor cadastrado.");
         }
-    }
+        else
+        {
+            foreach (var l in leitores)
+            {
+                Console.WriteLine($"Nome: {l.Nome}");
+                Console.WriteLine($"Cpf:: {l.Cpf}");
 
-    Console.WriteLine("\nPressione ENTER...");
-    Console.ReadLine();
-}
+                bool temLivro = false;
+
+                foreach (var e in emprestimos)
+                {
+                    if (e.Leitor == l)
+                    {
+                        Console.WriteLine($"Livros: {e.Livro.Titulo}");
+                        temLivro = true;
+                    }
+                }
+
+                if (!temLivro)
+                {
+                    Console.WriteLine("(Nenhum livro)");
+                }
+
+                Console.WriteLine("----------------------------");
+            }
+        }
+
+        Console.WriteLine("\nPressione ENTER...");
+        Console.ReadLine();
+    }
     private void BuscarLivroEmprestado()
     {
         Console.Write("ID Livro: ");

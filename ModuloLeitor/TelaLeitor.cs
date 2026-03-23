@@ -38,6 +38,8 @@ public class TelaLeitor
 
     private void CadastrarLeitor()
     {
+        Console.Clear();
+        Console.WriteLine("=== CADASTRO DE LEITOR ===\n");
         Console.Write("Nome: ");
         string nome = Console.ReadLine() ?? "";
 
@@ -97,34 +99,36 @@ public class TelaLeitor
         Console.WriteLine("\nLeitor atualizado!");
     }
 
-private void ListarLeitor()
-{
-    Console.Clear();
-    Console.WriteLine("=== LISTA DE LEITORES ===\n");
-
-    var lista = repoLeitor.SelecionarTodos();
-
-    if (lista.Count == 0)
+    private void ListarLeitor()
     {
-        Console.WriteLine("Nenhum leitor cadastrado.");
-    }
-    else
-    {
-        foreach (var l in lista)
+        Console.Clear();
+        Console.WriteLine("=== LISTA DE LEITORES ===\n");
+
+        var lista = repoLeitor.SelecionarTodos();
+
+        if (lista.Count == 0)
         {
-            Console.WriteLine($"CPF: {l.Cpf}");
-            Console.WriteLine($"Nome: {l.Nome}");
-            Console.WriteLine($"Telefone: {l.Telefone}");
-            Console.WriteLine("----------------------------");
+            Console.WriteLine("Nenhum leitor cadastrado.");
         }
-    }
+        else
+        {
+            foreach (var l in lista)
+            {
+                Console.WriteLine($"CPF: {l.Cpf}");
+                Console.WriteLine($"Nome: {l.Nome}");
+                Console.WriteLine($"Telefone: {l.Telefone}");
+                Console.WriteLine("----------------------------");
+            }
+        }
 
-    Console.WriteLine("\nPressione ENTER...");
-    Console.ReadLine();
-}
+        Console.WriteLine("\nPressione ENTER...");
+        Console.ReadLine();
+    }
 
     private void RemoverLeitor()
     {
+        Console.WriteLine("=== REMOVER LEITOR ===\n");
+        Console.Clear();
         Console.Write("CPF: ");
         string cpf = Console.ReadLine() ?? "";
 

@@ -10,16 +10,16 @@ public class RepositorioLivro
     }
 
     public void Editar(int id, string novoTitulo, string novoAutor, string novaEditora)
-{
-    var livro = SelecionarPorId(id);
-
-    if (livro != null)
     {
-        livro.Titulo = novoTitulo;
-        livro.Autor = novoAutor;
-        livro.Editora = novaEditora;
+        var livro = SelecionarPorId(id);
+
+        if (livro != null)
+        {
+            livro.Titulo = novoTitulo;
+            livro.Autor = novoAutor;
+            livro.Editora = novaEditora;
+        }
     }
-}
 
     public List<Livro> SelecionarTodos()
     {
@@ -29,5 +29,11 @@ public class RepositorioLivro
     public Livro? SelecionarPorId(int id)
     {
         return livros.FirstOrDefault(l => l.Id == id);
+    }
+    public void Remover(int id)
+    {
+        var livro = SelecionarPorId(id);
+        if (livro != null)
+            livros.Remove(livro);
     }
 }
