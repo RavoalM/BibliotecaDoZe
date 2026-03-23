@@ -1,3 +1,4 @@
+//Alvaro Machado Feltrin e Enzo Rosa Fernandes
 namespace Biblioteca;
 
 public class TelaLeitor
@@ -127,6 +128,7 @@ public class TelaLeitor
 
     private void RemoverLeitor()
     {
+        Console.Clear();
         Console.WriteLine("=== REMOVER LEITOR ===\n");
         Console.Clear();
         Console.Write("CPF: ");

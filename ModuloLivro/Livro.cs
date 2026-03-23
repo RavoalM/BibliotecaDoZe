@@ -1,5 +1,5 @@
+//Alvaro Machado Feltrin e Enzo Rosa Fernandes
 namespace Biblioteca;
-
 public class Livro : EntidadeBase<Livro>
 {
     public string Titulo { get; set; } = string.Empty;

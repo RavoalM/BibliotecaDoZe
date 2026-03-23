@@ -1,3 +1,4 @@
+//Alvaro Machado Feltrin e Enzo Rosa Fernandes
 namespace Biblioteca;
 
 public class TelaEmprestimo
@@ -119,6 +120,9 @@ public class TelaEmprestimo
     }
     private void BuscarLivroEmprestado()
     {
+        Console.Clear();
+        Console.WriteLine("=== BUSCAR LIVROS EMPRESTADOS ===\n");
+
         Console.Write("ID Livro: ");
         int id = int.Parse(Console.ReadLine()!);
 

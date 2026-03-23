@@ -1,5 +1,5 @@
+//Alvaro Machado Feltrin e Enzo Rosa Fernandes
 namespace Biblioteca;
-
 public class Leitor
 {
     public string Cpf { get; set; } = string.Empty;
