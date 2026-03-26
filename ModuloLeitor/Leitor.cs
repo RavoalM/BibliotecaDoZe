@@ -23,7 +23,7 @@ public class Leitor
         if (string.IsNullOrWhiteSpace(Cpf) || Cpf.Length != 11)
             erros += "CPF deve ter 11 dígitos.\n";
 
-        if (string.IsNullOrWhiteSpace(Telefone) || Telefone.Length <= 11)
+        if (string.IsNullOrWhiteSpace(Telefone) || Telefone.Length < 11)
             erros += "Telefone inválido.\n";
 
         return erros;

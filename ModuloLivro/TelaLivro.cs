@@ -104,6 +104,7 @@ public class TelaLivro
             {
                 Console.WriteLine($"ID: {l.Id}");
                 Console.WriteLine($"Título: {l.Titulo}");
+                Console.WriteLine($"Editora: {l.Editora}");
                 Console.WriteLine($"Status: {l.StatusEmprestimo}");
                 Console.WriteLine("----------------------------");
             }
