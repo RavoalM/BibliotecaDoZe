@@ -18,7 +18,7 @@ public class TelaPrincipal
         Console.WriteLine(" |                        ||                      |");
         Console.WriteLine(" |                        ||                      |");
         Console.WriteLine(" |                        ||                      |");
-        Console.WriteLine(" |      SEJA BEM VINDO AO BIBLIOTECA DO LIVRO!!   |");
+        Console.WriteLine(" |      SEJA BEM VINDO AO BIBLIOTECA DO KIKONZ!!  |");
         Console.WriteLine(" |                        ||                      |");
         Console.WriteLine(" |                        ||                      |");
         Console.WriteLine(" |                        ||                      |");
