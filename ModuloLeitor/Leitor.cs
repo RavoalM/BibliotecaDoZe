@@ -41,7 +41,7 @@ public class Leitor
         string nomeTratado = valor.Trim();
 
         if (nomeTratado.Length < 2)
-            throw new Exception("O nome deve ter pelo menos 2 caracteres.");
+            throw new Exception("O nome deve ter pelo menos 3 caracteres.");
 
         return nomeTratado;
     }

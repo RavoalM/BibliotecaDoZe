@@ -48,7 +48,7 @@ private void CadastrarLeitor()
     {
         try
         {
-            Console.Write("\nNome: ");
+            Console.Write("Nome: ");
             leitor.Nome = Console.ReadLine() ?? "";
             break;
         }
@@ -78,12 +78,11 @@ private void CadastrarLeitor()
         }
     }
 
-    // 🔹 Idade
     while (true)
     {
         try
         {
-            Console.Write("Idade: ");
+            Console.Write("\nIdade: ");
 
             if (!int.TryParse(Console.ReadLine(), out int idade))
                 throw new Exception("Digite um número válido.");
