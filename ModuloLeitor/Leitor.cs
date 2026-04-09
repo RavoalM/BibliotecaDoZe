@@ -1,31 +1,69 @@
-//Alvaro Machado Feltrin e Enzo Rosa Fernandes
 namespace Biblioteca;
+
 public class Leitor
 {
-    public string Cpf { get; set; } = string.Empty;
-    public string Nome { get; set; } = string.Empty;
-    public string Telefone { get; set; } = string.Empty;
+    private string nome = string.Empty;
+    private string cpf = string.Empty;
+    private int idade;
 
-    public Leitor(string nome, string cpf, string telefone)
+    public string Nome
+    {
+        get => nome;
+        set => nome = ValidarNome(value);
+    }
+
+    public string Cpf
+    {
+        get => cpf;
+        set => cpf = ValidarCpf(value);
+    }
+
+    public int Idade
+    {
+        get => idade;
+        set => idade = ValidarIdade(value);
+    }
+
+    public Leitor() { }
+
+    public Leitor(string nome, string cpf, int idade)
     {
         Nome = nome;
         Cpf = cpf;
-        Telefone = telefone;
+        Idade = idade;
     }
 
-    public string Validar()
+    private string ValidarNome(string valor)
     {
-        string erros = "";
+        if (string.IsNullOrWhiteSpace(valor))
+            throw new Exception("O campo \"Nome\" é obrigatório.");
 
-        if (string.IsNullOrWhiteSpace(Nome) || Nome.Length < 2)
-            erros += "Nome inválido.\n";
+        string nomeTratado = valor.Trim();
 
-        if (string.IsNullOrWhiteSpace(Cpf) || Cpf.Length != 11)
-            erros += "CPF deve ter 11 dígitos.\n";
+        if (nomeTratado.Length < 2)
+            throw new Exception("O nome deve ter pelo menos 2 caracteres.");
 
-        if (string.IsNullOrWhiteSpace(Telefone) || Telefone.Length < 11)
-            erros += "Telefone inválido.\n";
+        return nomeTratado;
+    }
 
-        return erros;
+    private string ValidarCpf(string valor)
+    {
+        if (string.IsNullOrWhiteSpace(valor))
+            throw new Exception("O campo \"CPF\" é obrigatório.");
+
+        string cpfTratado = valor.Trim();
+
+        if (cpfTratado.Length != 11)
+            throw new Exception("CPF deve ter 11 dígitos.");
+
+        return cpfTratado;
+    }
+
+    private int ValidarIdade(int valor)
+    {
+        if (valor <= 0)
+            throw new Exception("Idade inválida.");
+
+        return valor;
     }
 }

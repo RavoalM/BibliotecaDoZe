@@ -12,12 +12,18 @@ public class RepositorioLeitor
 
     public void Cadastrar(Leitor leitor)
     {
+        if (CpfJaExiste(leitor.Cpf))
+        {
+            Console.WriteLine("CPF já cadastrado!");
+            return;
+        }
+
         leitores.Add(leitor);
     }
 
-     public void EditarLeitor(string cpf, Leitor leitorAtualizado)
+    public void EditarLeitor(string cpfOriginal, Leitor leitorAtualizado)
     {
-        Leitor? leitor = SelecionarPorCpf(cpf);
+        Leitor? leitor = SelecionarPorCpf(cpfOriginal);
 
         if (leitor == null)
         {
@@ -25,9 +31,20 @@ public class RepositorioLeitor
             return;
         }
 
-        leitor.Nome = leitorAtualizado.Nome;
-        leitor.Cpf = leitorAtualizado.Cpf;
-        leitor.Telefone = leitorAtualizado.Telefone;
+        if (cpfOriginal != leitorAtualizado.Cpf && CpfJaExiste(leitorAtualizado.Cpf))
+        {
+            Console.WriteLine("Novo CPF já está em uso!");
+            return;
+        }
+
+        if (!string.IsNullOrWhiteSpace(leitorAtualizado.Nome))
+            leitor.Nome = leitorAtualizado.Nome;
+
+        if (!string.IsNullOrWhiteSpace(leitorAtualizado.Cpf))
+            leitor.Cpf = leitorAtualizado.Cpf;
+
+        if (leitorAtualizado.Idade > 0)
+            leitor.Idade = leitorAtualizado.Idade;
     }
 
     public List<Leitor> SelecionarTodos()
@@ -43,7 +60,13 @@ public class RepositorioLeitor
     public void Remover(string cpf)
     {
         var leitor = SelecionarPorCpf(cpf);
-        if (leitor != null)
-            leitores.Remove(leitor);
+
+        if (leitor == null)
+        {
+            Console.WriteLine("Leitor não encontrado!");
+            return;
+        }
+
+        leitores.Remove(leitor);
     }
 }

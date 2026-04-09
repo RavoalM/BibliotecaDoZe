@@ -37,68 +37,169 @@ public class TelaLeitor
         } while (opcao != 5);
     }
 
-    private void CadastrarLeitor()
+private void CadastrarLeitor()
+{
+    Console.Clear();
+    Console.WriteLine("=== CADASTRO DE LEITOR ===\n");
+
+    var leitor = new Leitor();
+
+    while (true)
     {
-        Console.Clear();
-        Console.WriteLine("=== CADASTRO DE LEITOR ===\n");
-        Console.Write("Nome: ");
-        string nome = Console.ReadLine() ?? "";
-
-        Console.Write("CPF: ");
-        string cpf = Console.ReadLine() ?? "";
-
-        if (repoLeitor.CpfJaExiste(cpf))
+        try
         {
-            Console.WriteLine("CPF já cadastrado!");
-            Console.ReadLine();
-            return;
+            Console.Write("\nNome: ");
+            leitor.Nome = Console.ReadLine() ?? "";
+            break;
         }
-
-        Console.Write("Telefone: ");
-        string telefone = Console.ReadLine() ?? "";
-
-        var leitor = new Leitor(nome, cpf, telefone);
-
-        string erros = leitor.Validar();
-
-        if (erros != "")
+        catch (Exception ex)
         {
-            Console.WriteLine(erros);
-            Console.ReadLine();
-            return;
+            Console.WriteLine($"Erro: {ex.Message}");
         }
-
-        repoLeitor.Cadastrar(leitor);
     }
 
-    public void EditarLeitor()
+    while (true)
     {
-        Console.Clear();
-        Console.WriteLine("=== EDITAR LEITOR ===\n");
-
-        Console.Write("CPF: ");
-        string cpf = Console.ReadLine() ?? "";
-
-        var leitor = repoLeitor.SelecionarPorCpf(cpf);
-
-        if (leitor == null)
+        try
         {
-            Console.WriteLine("Leitor não encontrado!");
-            Console.ReadLine();
-            return;
+            Console.Write("\nCPF: ");
+            string input = Console.ReadLine() ?? "";
+
+            leitor.Cpf = input; 
+
+            if (repoLeitor.CpfJaExiste(leitor.Cpf))
+                throw new Exception("\nCPF já cadastrado!");
+
+            break;
         }
-
-        Console.Write("Novo Nome: ");
-        leitor.Nome = Console.ReadLine() ?? "";
-
-        Console.Write("Novo CPF: ");
-       leitor.Cpf = Console.ReadLine() ?? "";
-
-        Console.Write("Nova Telefone: ");
-        leitor.Telefone = Console.ReadLine() ?? "";
-
-        Console.WriteLine("\nLeitor atualizado!");
+        catch (Exception ex)
+        {
+            Console.WriteLine($"\nErro: {ex.Message}");
+        }
     }
+
+    // 🔹 Idade
+    while (true)
+    {
+        try
+        {
+            Console.Write("Idade: ");
+
+            if (!int.TryParse(Console.ReadLine(), out int idade))
+                throw new Exception("Digite um número válido.");
+
+            leitor.Idade = idade;
+            break;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Erro: {ex.Message}");
+        }
+    }
+
+    repoLeitor.Cadastrar(leitor);
+
+    Console.WriteLine("\nLeitor cadastrado com sucesso!");
+    Console.ReadLine();
+}
+
+public void EditarLeitor()
+{
+    Console.Clear();
+    Console.WriteLine("=== EDITAR LEITOR ===\n");
+
+    Console.Write("CPF atual: ");
+    string cpf = Console.ReadLine() ?? "";
+
+    var leitor = repoLeitor.SelecionarPorCpf(cpf);
+
+    if (leitor == null)
+    {
+        Console.WriteLine("Leitor não encontrado!");
+        Console.ReadLine();
+        return;
+    }
+
+    Console.WriteLine("\nDeixe vazio para manter o valor atual.\n");
+
+    var leitorAtualizado = new Leitor();
+
+
+    while (true)
+    {
+        try
+        {
+            Console.Write($"\nNovo Nome ({leitor.Nome}): ");
+            string input = Console.ReadLine() ?? "";
+
+            leitorAtualizado.Nome = string.IsNullOrWhiteSpace(input) 
+                ? leitor.Nome 
+                : input;
+
+            break;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"\nErro: {ex.Message}");
+        }
+    }
+
+    while (true)
+    {
+        try
+        {
+            Console.Write($"\nNovo CPF ({leitor.Cpf}): ");
+            string input = Console.ReadLine() ?? "";
+
+            leitor.Cpf = input; 
+
+            if (repoLeitor.CpfJaExiste(leitor.Cpf))
+                throw new Exception("\nCPF já cadastrado!");
+
+            leitorAtualizado.Cpf = string.IsNullOrWhiteSpace(input) 
+                ? leitor.Cpf 
+                : input;
+
+            break;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"\nErro: {ex.Message}");
+        }
+    }
+
+    while (true)
+    {
+        try
+        {
+            Console.Write($"\nNova Idade ({leitor.Idade}): ");
+            string input = Console.ReadLine() ?? "";
+
+            if (string.IsNullOrWhiteSpace(input))
+            {
+                leitorAtualizado.Idade = leitor.Idade;
+            }
+            else
+            {
+                if (!int.TryParse(input, out int idade))
+                    throw new Exception("\nErro: Digite um número válido.");
+
+                leitorAtualizado.Idade = idade;
+            }
+
+            break;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"\nErro: {ex.Message}");
+        }
+    }
+
+    repoLeitor.EditarLeitor(cpf, leitorAtualizado);
+
+    Console.WriteLine("\nLeitor atualizado com sucesso!");
+    Console.ReadLine();
+}
 
     private void ListarLeitor()
     {
@@ -117,7 +218,7 @@ public class TelaLeitor
             {
                 Console.WriteLine($"CPF: {l.Cpf}");
                 Console.WriteLine($"Nome: {l.Nome}");
-                Console.WriteLine($"Telefone: {l.Telefone}");
+                Console.WriteLine($"Idade: {l.Idade}");
                 Console.WriteLine("----------------------------");
             }
         }
@@ -130,10 +231,13 @@ public class TelaLeitor
     {
         Console.Clear();
         Console.WriteLine("=== REMOVER LEITOR ===\n");
-        Console.Clear();
+
         Console.Write("CPF: ");
         string cpf = Console.ReadLine() ?? "";
 
         repoLeitor.Remover(cpf);
+
+        Console.WriteLine("\nOperação concluída!");
+        Console.ReadLine();
     }
 }
